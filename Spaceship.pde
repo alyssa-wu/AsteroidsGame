@@ -38,11 +38,12 @@ class Spaceship extends Floater
       vertex(xCorners[nI], yCorners[nI]);
     }
     endShape(CLOSE);
-    //if(isFiring == true)
-    //{
-    //  fill(255,0,0);
-    //  line(-20,0,-10,0);
-    //}
+    if(isFiring == true)
+    {
+      noStroke();
+      fill(255,100,0);
+      triangle(-16,-5,-16,5,-8,0);
+    }
 
     //"unrotate" and "untranslate" in reverse order
     rotate(-1*dRadians);
