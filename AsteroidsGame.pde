@@ -17,30 +17,31 @@ public void keyPressed()
   {
     bob.setXspeed(0);
     bob.setYspeed(0);
-    //isFiring = false;
+    isFiring = false;
   }
   if(key == 'w')
   {
     bob.accelerate(0.2);
-    //isFiring = true;
+    isFiring = true;
   }
   if(key == 'a')
   {
    bob.setXspeed(0);
    bob.setYspeed(0);
    bob.turn(-10); //rotate counterclockwise 
-   //isFiring = false;
+   isFiring = false;
   }
   if(key == 'd')
   {
    bob.setXspeed(0);
    bob.setYspeed(0);
    bob.turn(10); //rotate clockwise
-   //isFiring = false;
+   isFiring = false;
   }
   if(key == 'h')
   {
    bob.hyperspace(); 
+   isFiring = false;
   }
 }
 public void draw() 
