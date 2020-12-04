@@ -1,4 +1,4 @@
-//your variable declarations here
+///your variable declarations here
 Spaceship bob = new Spaceship();
 Asteroid aster = new Asteroid();
 boolean isFiring = false;
@@ -50,6 +50,7 @@ public void draw()
   background(0);
   //bob.accelerate(0.2); //constant acceleration
   aster.show();
+  aster.move();
   bob.move(); //Spaceship not moving, but will once change y speed
   bob.show(); //came from parent class
   for(int i = 0; i < nightSky.length; i++)
