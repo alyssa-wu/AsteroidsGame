@@ -1,7 +1,8 @@
-///your variable declarations here
+//your variable declarations here
 Spaceship bob = new Spaceship();
-Asteroid aster = new Asteroid();
+//Asteroid aster = new Asteroid();
 boolean isFiring = false;
+ArrayList <Asteroid> asteroids = new ArrayList <Asteroid>(); //creates arraylist of Asteroids
 
 public void setup() 
 {
@@ -11,6 +12,11 @@ public void setup()
   {
    nightSky[i] = new Star(); 
   }
+  for(int i = 0; i < 11; i++)
+  {
+   asteroids.add(new Asteroid()); 
+  }
+  
 }
 public void keyPressed()
 {
@@ -48,13 +54,17 @@ public void keyPressed()
 public void draw() 
 {
   background(0);
-  //bob.accelerate(0.2); //constant acceleration
-  aster.show();
-  aster.move();
   bob.move(); //Spaceship not moving, but will once change y speed
   bob.show(); //came from parent class
   for(int i = 0; i < nightSky.length; i++)
   {
    nightSky[i].show(); 
+  }
+  //aster.show();
+  //aster.move();
+  for(int i = 0; i < 11; i++) //equivalent to above comments, but with the list of asteroids
+  {
+   asteroids.get(i).show();
+   asteroids.get(i).move();
   }
 }
