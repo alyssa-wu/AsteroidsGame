@@ -1,8 +1,9 @@
 //your variable declarations here
 Spaceship bob = new Spaceship();
 //Asteroid aster = new Asteroid();
-boolean isFiring = false;
+public boolean isFiring = false;
 ArrayList <Asteroid> asteroids = new ArrayList <Asteroid>(); //creates arraylist of Asteroids
+//public int asteroidsSize = asteroids.size();
 
 public void setup() 
 {
@@ -12,12 +13,13 @@ public void setup()
   {
    nightSky[i] = new Star(); 
   }
-  for(int i = 0; i < 11; i++)
+  for(int i = 0; i < 10; i++)
   {
    asteroids.add(new Asteroid()); 
   }
   
 }
+
 public void keyPressed()
 {
   if(key == 's')
@@ -62,9 +64,15 @@ public void draw()
   }
   //aster.show();
   //aster.move();
-  for(int i = 0; i < 11; i++) //equivalent to above comments, but with the list of asteroids
-  {
+  for(int i = 0; i < asteroids.size(); i++) //equivalent to above comments, but with the list of asteroids
+  { //use asteroids.size() --> evade index out of range after removing element from array list
    asteroids.get(i).show();
    asteroids.get(i).move();
+   
+   //GAHHHHHHHHHHHHHHHH
+   if (dist((float)bob.getCenterX(),(float)bob.getCenterY(),(float)asteroids.get(i).getCenterX(),(float)asteroids.get(i).getCenterY()) < 10)
+   {
+     asteroids.remove(i);
+   }
   }
 }
