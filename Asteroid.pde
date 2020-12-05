@@ -3,7 +3,7 @@ class Asteroid extends Floater
   private double rotSpeed;
   public Asteroid() 
   {
-    rotSpeed = (double)(Math.random()*9)-1;
+    rotSpeed = (double)(Math.random()*7)-1;
     corners = 6;  //the number of corners, a triangular floater has 3   
     xCorners = new int[corners];   
     yCorners = new int[corners];
@@ -20,10 +20,10 @@ class Asteroid extends Floater
     xCorners[5] = -5;
     yCorners[5] = 0;
     myColor = color(150);   
-    myCenterX = (int)(Math.random()*401);
-    myCenterY = (int)(Math.random()*401);    
-    myXspeed = 0; 
-    myYspeed = 0;    
+    myCenterX = (double)(Math.random()*401.0);
+    myCenterY = (double)(Math.random()*401.0);    
+    myXspeed = (double)(Math.random()*3)-1.0; 
+    myYspeed = (double)(Math.random()*3)-1.0;   
     myPointDirection = 0;
   }
   public void move()
