@@ -10,12 +10,24 @@ class Bullet extends Floater
    myPointDirection = bob.getPointDirection();
    accelerate(4);
  }
+ public void move()
+ {
+  //change the x and y coordinates by myXspeed and myYspeed       
+    myCenterX += myXspeed;    
+    myCenterY += myYspeed; 
+ }
  public void show() //overrides floater class's show()
  {
   fill(255,255,0);
   //noStroke();
-  //ellipse((float)myCenterX,(float)myCenterY,5,5); 
+  //ellipse((float)myCenterX,(float)myCenterY,10,10); 
   textSize(10);
   text("pew",(float)myCenterX,(float)myCenterY);
  }
+ public double getCenterX(){
+   return myCenterX;
+  }
+  public double getCenterY(){
+   return myCenterY;
+  }
 }
