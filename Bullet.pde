@@ -31,3 +31,4 @@ class Bullet extends Floater
    return myCenterY;
   }
 }
+//fix bug?
