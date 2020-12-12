@@ -1,89 +1,52 @@
-//your variable declarations here
-//Asteroid aster = new Asteroid();
-Spaceship bob = new Spaceship();
-public boolean isFiring = false;
-ArrayList <Asteroid> asteroids = new ArrayList <Asteroid>(); //creates arraylist of Asteroids
-ArrayList <Bullet> shots = new ArrayList <Bullet>(); //creates an arrayList of Bullet(s)
-
-public void setup() 
+class Asteroid extends Floater
 {
-  size(400,400);
-  background(0);
-  for(int i = 0; i < nightSky.length; i++)
+  private double rotSpeed;
+  public Asteroid() 
   {
-   nightSky[i] = new Star(); 
+    rotSpeed = (double)(Math.random()*7)-1;
+    corners = 6;  //the number of corners, a triangular floater has 3   
+    xCorners = new int[corners];   
+    yCorners = new int[corners];
+    xCorners[0] = -11;
+    yCorners[0] = -8;
+    xCorners[1] = 7;
+    yCorners[1] = -8;
+    xCorners[2] = 13;
+    yCorners[2] = 0;
+    xCorners[3] = 6;
+    yCorners[3] = 10;
+    xCorners[4] = -11;
+    yCorners[4] = 8;
+    xCorners[5] = -5;
+    yCorners[5] = 0;
+    myColor = color(150);   
+    myCenterX = (double)(Math.random()*401.0);
+    myCenterY = (double)(Math.random()*401.0);    
+    myXspeed = (double)(Math.random()*3)-1.0; 
+    myYspeed = (double)(Math.random()*3)-1.0;   
+    myPointDirection = 0;
   }
-  for(int i = 0; i < 10; i++)
+  public void move()
   {
-   asteroids.add(new Asteroid()); 
+    turn(rotSpeed);
+    super.move();
   }
-  
-}
-
-public void keyPressed()
-{
-  if(key == 's')
-  {
-    bob.setXspeed(0);
-    bob.setYspeed(0);
-    isFiring = false;
+  public void setXspeed(double x){
+   myXspeed = x; 
   }
-  if(key == 'w')
-  {
-    bob.accelerate(0.2);
-    isFiring = true;
+  public void setYspeed(double y){
+   myYspeed = y; 
   }
-  if(key == 'a')
-  {
-   bob.setXspeed(0);
-   bob.setYspeed(0);
-   bob.turn(-10); //rotate counterclockwise 
-   isFiring = false;
+  public void setCenterX(double x){
+   myCenterX = x; 
   }
-  if(key == 'd')
-  {
-   bob.setXspeed(0);
-   bob.setYspeed(0);
-   bob.turn(10); //rotate clockwise
-   isFiring = false;
+  public void setCenterY(double y){
+   myCenterY = y; 
   }
-  if(key == 'h')
-  {
-   bob.hyperspace(); 
-   isFiring = false;
+  public double getCenterX(){
+   return myCenterX;
   }
-  if(key == ' ')
-  {
-   shots.add(new Bullet(bob)); 
-  }
-}
-public void draw() 
-{
-  //System.out.println(bob.getCenterX());
-  background(0);
-  bob.move(); //Spaceship not moving, but will once change y speed
-  bob.show(); //came from parent class
-  for(int i = 0; i < nightSky.length; i++)
-  {
-   nightSky[i].show(); 
-  }
-  //aster.show();
-  //aster.move();
-  for(int i = 0; i < asteroids.size(); i++) //equivalent to above comments, but with the list of asteroids
-  { 
-   asteroids.get(i).show();
-   asteroids.get(i).move();
-   //GAHHHHHHHHHHHHHHHH
-   if (dist((float)bob.getCenterX(),(float)bob.getCenterY(),(float)asteroids.get(i).getCenterX(),(float)asteroids.get(i).getCenterY()) < 10)
-   {
-     asteroids.remove(i);
-   }
-  }
-  for(int i = 0; i < shots.size(); i++)
-  {
-   shots.get(i).move();
-   shots.get(i).show();
-   //shots.getCenterX() and getCenterY() do not exist
-   //if (dist((float)shots.get(i).getCenterX(),(float)shots.get(i).getCenterX(),(float)asteroids.get(i).getCenterX(),(float)asteroids.get(i).getCenterY()) < 10)
+  public double getCenterY(){
+   return myCenterY;
   }
 }
