@@ -1,9 +1,9 @@
 //your variable declarations here
-Spaceship bob = new Spaceship();
 //Asteroid aster = new Asteroid();
+Spaceship bob = new Spaceship();
 public boolean isFiring = false;
 ArrayList <Asteroid> asteroids = new ArrayList <Asteroid>(); //creates arraylist of Asteroids
-//public int asteroidsSize = asteroids.size();
+ArrayList <Bullet> shots = new ArrayList <Bullet>(); //creates an arrayList of Bullet(s)
 
 public void setup() 
 {
@@ -52,9 +52,14 @@ public void keyPressed()
    bob.hyperspace(); 
    isFiring = false;
   }
+  if(key == ' ')
+  {
+   shots.add(new Bullet(bob)); 
+  }
 }
 public void draw() 
 {
+  //System.out.println(bob.getCenterX());
   background(0);
   bob.move(); //Spaceship not moving, but will once change y speed
   bob.show(); //came from parent class
@@ -65,14 +70,20 @@ public void draw()
   //aster.show();
   //aster.move();
   for(int i = 0; i < asteroids.size(); i++) //equivalent to above comments, but with the list of asteroids
-  { //use asteroids.size() --> evade index out of range after removing element from array list
+  { 
    asteroids.get(i).show();
    asteroids.get(i).move();
-   
    //GAHHHHHHHHHHHHHHHH
    if (dist((float)bob.getCenterX(),(float)bob.getCenterY(),(float)asteroids.get(i).getCenterX(),(float)asteroids.get(i).getCenterY()) < 10)
    {
      asteroids.remove(i);
    }
+  }
+  for(int i = 0; i < shots.size(); i++)
+  {
+   shots.get(i).move();
+   shots.get(i).show();
+   //shots.getCenterX() and getCenterY() do not exist
+   //if (dist((float)shots.get(i).getCenterX(),(float)shots.get(i).getCenterX(),(float)asteroids.get(i).getCenterX(),(float)asteroids.get(i).getCenterY()) < 10)
   }
 }
