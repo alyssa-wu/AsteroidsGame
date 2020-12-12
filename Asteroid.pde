@@ -73,7 +73,6 @@ public void draw()
   { 
    asteroids.get(i).show();
    asteroids.get(i).move();
-   
    //GAHHHHHHHHHHHHHHHH
    if (dist((float)bob.getCenterX(),(float)bob.getCenterY(),(float)asteroids.get(i).getCenterX(),(float)asteroids.get(i).getCenterY()) < 10)
    {
@@ -84,5 +83,7 @@ public void draw()
   {
    shots.get(i).move();
    shots.get(i).show();
+   //shots.getCenterX() and getCenterY() do not exist
+   //if (dist((float)shots.get(i).getCenterX(),(float)shots.get(i).getCenterX(),(float)asteroids.get(i).getCenterX(),(float)asteroids.get(i).getCenterY()) < 10)
   }
 }
