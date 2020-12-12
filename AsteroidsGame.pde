@@ -83,7 +83,19 @@ public void draw()
   {
    shots.get(i).move();
    shots.get(i).show();
-   //shots.getCenterX() and getCenterY() do not exist
-   //if (dist((float)shots.get(i).getCenterX(),(float)shots.get(i).getCenterX(),(float)asteroids.get(i).getCenterX(),(float)asteroids.get(i).getCenterY()) < 10)
+  }
+  
+  //detect asteroids and bullets??
+  for(int i = 0; i < shots.size(); i++) //this loops through all bullets
+  {
+    for(int j = 0; j < asteroids.size(); j ++) //ALSO LOOPS THROUGH ALL ASTEROIDS
+    {
+       if (dist((float)shots.get(i).getCenterX(),(float)shots.get(i).getCenterY(),(float)asteroids.get(j).getCenterX(),(float)asteroids.get(j).getCenterY()) < 20)
+         {
+          shots.remove(i);
+          asteroids.remove(j);
+          break;
+         }
+    }
   }
 }
