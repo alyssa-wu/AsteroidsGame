@@ -52,7 +52,7 @@ public void keyPressed()
    bob.hyperspace(); 
    isFiring = false;
   }
-  if(key == ' ')
+  if(key == 'b')
   {
    shots.add(new Bullet(bob)); 
   }
